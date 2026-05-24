@@ -2,7 +2,7 @@ import type { StaticMessages } from "./types";
 
 export const ru: StaticMessages = {
   meta: {
-    title: "AgentProof — валидация и аттестация ИИ-агентов",
+    title: "Stela — валидация и аттестация ИИ-агентов",
     description:
       "Проверяем агента, публикуем результат в открытый реестр. Пример на Sepolia.",
   },
@@ -24,12 +24,14 @@ export const ru: StaticMessages = {
     jump: "Пример",
   },
   problem: {
-    title: "Нет общего доказательства проверки",
+    label: "Проблема",
+    title: "Нельзя проверить агента, которого не тестировал сам",
     body:
       "Отчёт остаётся внутри команды. Третья сторона не может сама скачать JSON и сверить его с записью в блокчейне.",
   },
   solution: {
-    title: "Как это работает",
+    label: "Решение",
+    title: "Stela делает валидацию публичной и проверяемой",
     steps: [
       { label: "Проверка", text: "Код и поведение → один JSON-отчёт." },
       { label: "Публикация", text: "Отчёт в IPFS, балл в Validation Registry." },
@@ -59,7 +61,7 @@ export const ru: StaticMessages = {
     },
   },
   footer: {
-    line: "AgentProof · прототип · Sepolia",
+    line: "Stela · прототип · Sepolia",
     contact: "Связаться",
     links: [
       { key: "registry", label: "Реестр" },

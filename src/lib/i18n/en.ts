@@ -2,7 +2,7 @@ import type { StaticMessages } from "./types";
 
 export const en: StaticMessages = {
   meta: {
-    title: "AgentProof — AI agent validation & attestation",
+    title: "Stela — AI agent validation & attestation",
     description:
       "Validate an agent, publish the result to a public registry. Example on Sepolia.",
   },
@@ -24,12 +24,14 @@ export const en: StaticMessages = {
     jump: "Example",
   },
   problem: {
-    title: "No shared proof of validation",
+    label: "Problem",
+    title: "You can't verify an agent you didn't test yourself",
     body:
       "Reports stay inside the team. A third party cannot fetch the JSON and match it to an on-chain record on their own.",
   },
   solution: {
-    title: "How it works",
+    label: "Solution",
+    title: "Stela makes validation public and verifiable",
     steps: [
       { label: "Validate", text: "Code and behavior → one JSON report." },
       { label: "Publish", text: "Report on IPFS, score in Validation Registry." },
@@ -59,7 +61,7 @@ export const en: StaticMessages = {
     },
   },
   footer: {
-    line: "AgentProof · prototype · Sepolia",
+    line: "Stela · prototype · Sepolia",
     contact: "Contact",
     links: [
       { key: "registry", label: "Registry" },

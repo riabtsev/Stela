@@ -50,7 +50,7 @@ export default function LandingPage({ locale }: LandingPageProps) {
                 strokeLinejoin="round"
               />
             </svg>
-            AgentProof
+            Stela
           </a>
           <div className="nav-links">
             <a href="#problem">{m.nav.problem}</a>
@@ -73,6 +73,7 @@ export default function LandingPage({ locale }: LandingPageProps) {
 
       <section className="section-distill" id="problem">
         <div className="wrap block">
+          <p className="section-label section-label--problem">{m.problem.label}</p>
           <h2 className="block-title">{m.problem.title}</h2>
           <p className="block-body">{m.problem.body}</p>
         </div>
@@ -80,6 +81,7 @@ export default function LandingPage({ locale }: LandingPageProps) {
 
       <section className="section-distill" id="solution">
         <div className="wrap block block-wide">
+          <p className="section-label section-label--solution">{m.solution.label}</p>
           <h2 className="block-title">{m.solution.title}</h2>
           <ol className="flow-list">
             {m.solution.steps.map((step) => (

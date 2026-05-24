@@ -57,10 +57,12 @@ export type StaticMessages = {
     jump: string;
   };
   problem: {
+    label: string;
     title: string;
     body: string;
   };
   solution: {
+    label: string;
     title: string;
     steps: SolutionStep[];
   };

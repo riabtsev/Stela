@@ -26,7 +26,7 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AgentProof — verifiable validation for AI agents",
+  title: "Stela — verifiable validation for AI agents",
   description:
     "Run code and behavioral checks on an AI agent, publish the result to a public registry. Anyone can download the report and verify it on-chain.",
 };
