@@ -1,0 +1,288 @@
+- generic [active] [ref=e1]:
+  - navigation "Primary" [ref=e2]:
+    - generic [ref=e3]:
+      - link "AgentProof" [ref=e4] [cursor=pointer]:
+        - /url: "#top"
+        - text: AgentProof
+      - generic [ref=e6]:
+        - link "Concept" [ref=e7] [cursor=pointer]:
+          - /url: "#concept"
+        - link "Process" [ref=e8] [cursor=pointer]:
+          - /url: "#process"
+        - link "Example record" [ref=e9] [cursor=pointer]:
+          - /url: "#record"
+        - link "Details" [ref=e10] [cursor=pointer]:
+          - /url: "#details"
+  - banner [ref=e11]:
+    - generic [ref=e13]:
+      - generic [ref=e14]: Concept note
+      - generic [ref=e16]:
+        - heading "AgentProof — on-chain attestation for agent behavior" [level=1] [ref=e17]:
+          - text: AgentProof —
+          - text: on-chain attestation for agent behavior
+        - paragraph [ref=e18]: One real Sepolia tx, one IPFS JSON artifact, and EIP-8004 — so reviewers can argue with data instead of slideware.
+        - paragraph [ref=e19]: Structured evaluation of an agent (static checks, simulated attacks, scripted task checks) yields a JSON report. A compact attestation referencing that artifact is written to an ERC-8004 Validation Registry on Ethereum Sepolia. This page exists to document the intent and anchor it to one real Sepolia transaction and its IPFS payload — not to sell validation as a service.
+        - paragraph [ref=e20]:
+          - link "See example attestation (chain + artifact)" [ref=e21] [cursor=pointer]:
+            - /url: "#record"
+          - generic [ref=e22]: ·
+          - link "Validation Registry contract (Sepolia) ↗" [ref=e23] [cursor=pointer]:
+            - /url: https://sepolia.etherscan.io/address/0x85C0e69BfB3483d78F73F5AE102E59981AD40755
+  - generic [ref=e25]:
+    - generic [ref=e26]:
+      - generic [ref=e27]: Context
+      - heading "Why attest behavior at all" [level=2] [ref=e28]
+    - generic [ref=e30]:
+      - list "Summary" [ref=e31]:
+        - listitem [ref=e32]: Bundle evidence in a reproducible JSON artifact instead of chasing moving demos.
+        - listitem [ref=e33]:
+          - text: Pin via IPFS CID and cite it immutably in
+          - code [ref=e34]: responseURI
+          - text: .
+        - listitem [ref=e35]: Anchor to an ERC-8004 Validation Registry slot on Sepolia that anyone opens in a block explorer.
+        - listitem [ref=e36]: "Separate hype from hashing: criticize encoding, tooling, or trust assumptions outright."
+      - separator [ref=e37]
+      - generic [ref=e38]:
+        - paragraph [ref=e39]: "Procurement and risk teams routinely ask whether an LLM-backed agent behaves within policy when stressed. Internal demos and vendor PDFs rarely give a reproducible basis for that answer: the underlying prompts, tooling, and test harness change under the reader's feet."
+        - paragraph [ref=e40]:
+          - text: "The goal here is narrower: freeze a reproducible artifact (evaluation JSON plus metric rollups), reference it immutably (IPFS CID in"
+          - code [ref=e41]: responseURI
+          - text: ), and bind it to permissionless verification (Sepolia explorer + EIP-8004 surface). It is engineering documentation for critics, not a marketing claim about “military-grade TEE.”
+        - paragraph [ref=e42]: Feedback wanted on whether that binding is coherent, sufficient, or missing obvious trust assumptions — especially registry operator trust vs. verifier trustlessness.
+    - figure "Proof chain How evidence moves from evaluation tooling to a checkable on-chain pointer." [ref=e43]:
+      - generic [ref=e44]:
+        - generic [ref=e45]: Proof chain
+        - text: How evidence moves from evaluation tooling to a checkable on-chain pointer.
+      - list [ref=e46]:
+        - listitem [ref=e47]:
+          - generic [ref=e48]:
+            - generic [ref=e49]: "01"
+            - generic [ref=e50]:
+              - generic [ref=e51]: Evaluation runner
+              - paragraph [ref=e52]: Static checks, scenario runs, scripted tasks — outputs merge into one JSON artifact.
+          - generic [ref=e53]:
+            - generic [ref=e55]: Bundle + pin to IPFS
+            - generic [ref=e56]: ↓
+        - listitem [ref=e57]:
+          - generic [ref=e58]:
+            - generic [ref=e59]: "02"
+            - generic [ref=e60]:
+              - generic [ref=e61]: Pinned JSON artifact
+              - paragraph [ref=e62]: CID referenced in validation calldata (responseURI). Anyone can fetch and inspect the bytes.
+          - generic [ref=e63]:
+            - generic [ref=e65]: ERC-8004 validationResponse on Sepolia
+            - generic [ref=e66]: ↓
+        - listitem [ref=e67]:
+          - generic [ref=e68]:
+            - generic [ref=e69]: "03"
+            - generic [ref=e70]:
+              - generic [ref=e71]: Validation Registry
+              - paragraph [ref=e72]:
+                - text: "On-chain record: agent ID, request hash, uint8 score, CID string — emitted by"
+                - code [ref=e73]: validationResponse
+                - text: .
+          - generic [ref=e74]:
+            - generic [ref=e76]: Public verification
+            - generic [ref=e77]: ↓
+        - listitem [ref=e78]:
+          - generic [ref=e79]:
+            - generic [ref=e80]: "04"
+            - generic [ref=e81]:
+              - generic [ref=e82]: Anyone verifies
+              - paragraph [ref=e83]: Open the tx in a block explorer, resolve the CID, reconcile JSON fields with event logs.
+  - generic [ref=e85]:
+    - generic [ref=e86]:
+      - generic [ref=e87]: Pipeline
+      - heading "Evaluate, aggregate, attest" [level=2] [ref=e88]
+    - figure "Execution outline Same three phases as the columns below — scan this first, then read details." [ref=e89]:
+      - generic [ref=e90]:
+        - generic [ref=e91]: Execution outline
+        - text: Same three phases as the columns below — scan this first, then read details.
+      - list [ref=e92]:
+        - listitem [ref=e93]:
+          - generic [ref=e94]:
+            - generic [ref=e95]: "01"
+            - generic [ref=e96]:
+              - generic [ref=e97]: Evaluate
+              - paragraph [ref=e98]: Run semgrep, deepteam, deepeval, pyrit — each layer appends structured findings to a working bundle.
+            - generic [ref=e277]: merge tool outputs →
+        - listitem [ref=e103]:
+          - generic [ref=e104]:
+            - generic [ref=e105]: "02"
+            - generic [ref=e106]:
+              - generic [ref=e107]: Aggregate
+              - paragraph [ref=e108]:
+                - text: Compute
+                - code [ref=e109]: overall_score
+                - text: and metric slices; publish weighting beside the artifact hash.
+            - generic [ref=e278]: pin JSON + prepare calldata →
+        - listitem [ref=e114]:
+          - generic [ref=e115]:
+            - generic [ref=e116]: "03"
+            - generic [ref=e117]:
+              - generic [ref=e118]: Attest
+              - paragraph [ref=e119]:
+                - text: Call
+                - code [ref=e120]: validationResponse
+                - text: on Sepolia — shared receipts and CID pointer for reviewers.
+    - generic [ref=e121]:
+      - generic [ref=e122]:
+        - generic [ref=e123]:
+          - generic [ref=e124]: "01"
+          - generic [ref=e125]: Evaluate
+        - heading "Multi-tool probes" [level=3] [ref=e126]
+        - paragraph [ref=e127]: Example runs layered semgrep-derived signal, deepteam attack scenarios, deepeval task checks, and pyrit probing. Each layer emits diagnostics and summaries that land in one JSON artifact.
+        - list [ref=e128]:
+          - listitem [ref=e129]: → semgrep metrics on orchestration snippets
+          - listitem [ref=e130]: → deepteam jailbreak / robustness classifications
+          - listitem [ref=e131]: → deepeval task completion scores
+          - listitem [ref=e132]: → pyrit aggregates for refusal and injection posture
+        - generic [ref=e133]: Artifact is the canonical evidence bundle
+      - generic [ref=e134]:
+        - generic [ref=e135]:
+          - generic [ref=e136]: "02"
+          - generic [ref=e137]: Aggregate
+        - heading "Scores and rollups" [level=3] [ref=e138]
+        - paragraph [ref=e139]:
+          - text: The JSON stores per-metric aggregates (for example
+          - code [ref=e140]: overall_score
+          - text: and nested
+          - code [ref=e141]: metric_scores
+          - text: ) produced by merging those tool outputs according to whichever weighting scheme the evaluation runner encodes — spelled out beside the artifact, not here.
+        - list [ref=e142]:
+          - listitem [ref=e143]: → overall_score floats (shown as 64.66 in artifact)
+          - listitem [ref=e144]: → uint8 coercion at chain write time (shown as 65 on-chain)
+          - listitem [ref=e145]: → responseHash intentionally zero per sample tx decode
+        - generic [ref=e146]: Transparency lives in reproducible tooling + hashes, not vibes
+      - generic [ref=e147]:
+        - generic [ref=e148]:
+          - generic [ref=e149]: "03"
+          - generic [ref=e150]: Attest
+        - heading "Registry write" [level=3] [ref=e151]
+        - paragraph [ref=e152]:
+          - code [ref=e153]: validationResponse(bytes32,uint8,string,bytes32,string)
+          - text: is invoked on Sepolia's ERC-8004 validation registry proxy.
+          - code [ref=e154]: responseURI
+          - text: points at the CID below; explorers show the plaintext IPFS URI in input data/logs.
+        - list [ref=e155]:
+          - listitem [ref=e156]: → etherscan verifies event topics + decoded fields
+          - listitem [ref=e157]: → IPFS preserves the heavyweight JSON verbatim
+          - listitem [ref=e158]: → anyone recomputes or re-hosts tooling against the CID
+        - generic [ref=e159]: Critique the encoding, not a slide deck
+  - generic [ref=e161]:
+    - generic [ref=e162]:
+      - generic [ref=e163]: Example record
+      - heading "One concrete Sepolia attestation" [level=2] [ref=e164]
+    - article "Example ERC-8004 validation record" [ref=e165]:
+      - generic [ref=e166]:
+        - generic [ref=e167]: ERC-8004 · ValidationRegistry · ValidationResponse · Sepolia
+        - generic [ref=e168]: Example record
+      - generic [ref=e170]:
+        - generic [ref=e171]:
+          - generic [ref=e172]:
+            - generic [ref=e173]: Agent ID
+            - generic [ref=e174]: "3498"
+          - generic [ref=e175]:
+            - generic [ref=e176]: Validated
+            - generic [ref=e177]: 2026-04-21 · Sepolia · ~15:47 UTC
+          - generic [ref=e178]:
+            - generic [ref=e179]: Request hash
+            - generic "0xa3db59bf6938b3d41e936deb68e28a0062c3e4079f0330a60135072ffd69eaa5" [ref=e180]: a3db59bf…fd69eaa5
+          - generic [ref=e181]:
+            - generic [ref=e182]: Validator
+            - link "0x69AE…d40F" [ref=e184] [cursor=pointer]:
+              - /url: https://sepolia.etherscan.io/address/0x69AEd14eA885e944abB54A8C7F5A9f18c85ed40F
+              - text: 0x69AE…d40F ↗
+          - generic [ref=e185]:
+            - generic [ref=e186]: Registry contract
+            - link "0x85C0…0755" [ref=e188] [cursor=pointer]:
+              - /url: https://sepolia.etherscan.io/address/0x85C0e69BfB3483d78F73F5AE102E59981AD40755
+              - text: 0x85C0…0755 ↗
+        - generic [ref=e189]:
+          - generic [ref=e190]: Overall score
+          - generic [ref=e191]: 64.66 / 100
+          - paragraph [ref=e192]:
+            - text: On-chain encoding uses
+            - strong [ref=e193]: response (uint8) = 65
+            - text: ; it may round the floating-point aggregate in the IPFS artifact.
+      - generic [ref=e194]:
+        - generic [ref=e195]:
+          - generic [ref=e196]: Metric scores
+          - generic [ref=e197]: Values mirror the pinned IPFS JSON (same numeric fields).
+        - generic [ref=e198]:
+          - generic [ref=e199]:
+            - term [ref=e200]: Task completion rate
+            - definition [ref=e201]: "100"
+          - generic [ref=e202]:
+            - term [ref=e203]: Outcome consistency
+            - definition [ref=e204]: "95"
+          - generic [ref=e205]:
+            - term [ref=e206]: Fault robustness
+            - definition [ref=e207]: "100"
+          - generic [ref=e208]:
+            - term [ref=e209]: Prompt injection resistance (score)
+            - definition [ref=e210]: "100"
+          - generic [ref=e211]:
+            - term [ref=e212]: Prompt robustness
+            - definition [ref=e213]: "50"
+          - generic [ref=e214]:
+            - term [ref=e215]: Safety failure rate
+            - definition [ref=e216]: "30.3333"
+          - generic [ref=e217]:
+            - term [ref=e218]: Misalignment rate
+            - definition [ref=e219]: "25"
+      - group [ref=e220]:
+        - generic "> Evaluation trace summary" [ref=e221] [cursor=pointer]
+      - generic [ref=e222]:
+        - generic [ref=e223]:
+          - generic [ref=e224]: Transaction
+          - link "0x91f0582c…5d88bbaf" [ref=e226] [cursor=pointer]:
+            - /url: https://sepolia.etherscan.io/tx/0x91f0582c3e7b394c61c91a7b9b8de4fbc97b35adbcea9e834be0f8275d88bbaf
+            - text: 0x91f0582c…5d88bbaf ↗
+        - generic [ref=e227]:
+          - generic [ref=e228]: Full report JSON
+          - link "QmNdvmcqoRm4…" [ref=e230] [cursor=pointer]:
+            - /url: https://rose-added-gopher-345.mypinata.cloud/ipfs/QmNdvmcqoRm4xtUfsxh79s4mHSipir6PLCrpivaWmpWkcj
+            - text: QmNdvmcqoRm4… ↗
+        - generic [ref=e231]:
+          - generic [ref=e232]: Standard
+          - link "EIP-8004" [ref=e234] [cursor=pointer]:
+            - /url: https://eips.ethereum.org/EIPS/eip-8004
+            - text: EIP-8004 ↗
+      - paragraph [ref=e235]: Inspect the IPFS artifact and correlate fields with event logs from the Sepolia tx.
+  - generic [ref=e237]:
+    - generic [ref=e238]:
+      - generic [ref=e239]: Facts
+      - heading "Technical details" [level=2] [ref=e240]
+    - generic [ref=e241]:
+      - generic [ref=e242]:
+        - generic [ref=e243]: Standard
+        - generic [ref=e244]:
+          - text: ERC-8004 Validation Registry primitives —
+          - link "EIP-8004 ↗" [ref=e245] [cursor=pointer]:
+            - /url: https://eips.ethereum.org/EIPS/eip-8004
+      - generic [ref=e246]:
+        - generic [ref=e247]: Network
+        - generic [ref=e248]: Ethereum Sepolia testnet
+      - generic [ref=e249]:
+        - generic [ref=e250]: Registry contract
+        - link "0x85C0e69B…0755 ↗" [ref=e252] [cursor=pointer]:
+          - /url: https://sepolia.etherscan.io/address/0x85C0e69BfB3483d78F73F5AE102E59981AD40755
+      - generic [ref=e253]:
+        - generic [ref=e254]: Example transaction
+        - link "0x91f0582c…bbaf ↗" [ref=e256] [cursor=pointer]:
+          - /url: https://sepolia.etherscan.io/tx/0x91f0582c3e7b394c61c91a7b9b8de4fbc97b35adbcea9e834be0f8275d88bbaf
+      - generic [ref=e257]:
+        - generic [ref=e258]: Artifact format
+        - generic [ref=e259]:
+          - text: JSON pinned on IPFS, referenced via
+          - code [ref=e260]: ipfs://
+          - text: in calldata/logs
+      - generic [ref=e261]:
+        - generic [ref=e262]: Scoring
+        - generic [ref=e263]: Derived from semgrep · deepteam · deepeval · pyrit outputs aggregated into numeric fields (see artifact). Separate documentation should publish weights and versioning; absent that, trust the reproducible hashes and criticize gaps openly.
+  - contentinfo [ref=e264]:
+    - paragraph [ref=e266]: AgentProof concept draft · ERC-8004 attestation on Sepolia · For expert review
+  - button "Open Next.js Dev Tools" [ref=e272] [cursor=pointer]:
+    - img [ref=e273]
+  - alert [ref=e276]: AgentProof — on-chain attestation for agent behavior
