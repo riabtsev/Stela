@@ -57,7 +57,7 @@ export default function LandingPage({ locale }: LandingPageProps) {
             <a href="#solution">{m.nav.solution}</a>
             <a href="#verify-flow">{m.nav.verify}</a>
             <a href="#example">{m.nav.example}</a>
-            <a className="nav-email" href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+            <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
           </div>
         </div>
       </nav>
