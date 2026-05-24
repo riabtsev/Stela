@@ -61,7 +61,7 @@ export const en: StaticMessages = {
     },
   },
   footer: {
-    line: "Stela · prototype · Sepolia",
+    line: "Stela · Sepolia",
     contact: "Contact",
     links: [
       { key: "registry", label: "Registry" },

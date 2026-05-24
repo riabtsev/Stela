@@ -61,7 +61,7 @@ export const ru: StaticMessages = {
     },
   },
   footer: {
-    line: "Stela · прототип · Sepolia",
+    line: "Stela · Sepolia",
     contact: "Связаться",
     links: [
       { key: "registry", label: "Реестр" },

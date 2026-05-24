@@ -83,11 +83,6 @@ export default function AttestationRecord({ copy }: AttestationRecordProps) {
         </ul>
       </section>
 
-      <aside className="report-failure report-failure-distill">
-        <p className="report-failure-title">{copy.notableFailureTitle}</p>
-        <p className="report-failure-body">{copy.notableFailureBody}</p>
-      </aside>
-
       <footer className="report-foot report-foot-distill">
         <div>
           <span className="k">{copy.transaction}</span>
